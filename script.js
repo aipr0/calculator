@@ -1,3 +1,8 @@
+let firstValue = 0;
+let secondValue = 0;
+let operator = "";
+
+
 function addOp(a, b) {
     return a + b;
 }
@@ -26,6 +31,26 @@ function operate(operator, a, b) {
     }
 }
 
+function namedCallBack(e) {
+    console.log(e.target.textContent);
+}
+
+function getButtonValue() {
+    const btns = document.querySelectorAll('button');
+
+    btns.forEach(btn => {
+        btn.addEventListener('click', namedCallBack);
+    })
+}
+
+
+function calculate() {
+
+}
+
+getButtonValue()
+
+//Testing calculator operations
 console.log(operate("add", 2, 2)); //Should be 4
 console.log(operate("subtract", 10, 1)); //Should be 9
 console.log(operate("multiply", 5, 5)); //Should be 25
