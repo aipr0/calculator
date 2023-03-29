@@ -1,6 +1,7 @@
 let firstValue = 0;
 let secondValue = 0;
 let operator = "";
+let operatorInUse = false;
 
 // Dummy values for testing first and second numbers used in calculation are reset when CLR is pressed
 // firstValue = 5;
@@ -12,6 +13,7 @@ function resetValues() {
     firstValue = 0;
     secondValue = 0;
     operator = "";
+    operatorInUse = false;
 }
 
 function addOp(a, b) {
@@ -31,29 +33,60 @@ function divOp(a, b) {
 }
 
 function operate(operator, a, b) {
-    if(operator === "add") {
+    a = parseInt(a);
+    b = parseInt(b);
+
+    if(operator === "+") {
         return addOp(a, b);
-    } else if(operator === "subtract") {
+    } else if(operator === "-") {
         return subOp(a, b);
-    } else if(operator === "multiply") {
+    } else if(operator === "x") {
         return multOp(a, b);
-    } else if(operator === "divide") {
+    } else if(operator === "/") {
         return divOp(a, b);
     }
+}
+
+function getCurrentCalcValue() {
+     return document.querySelector(".display").textContent;
 }
 
 function calculate(e) {
     let btnInput = e.target.textContent;
     console.log(btnInput);
 
-    document.querySelector(".display").textContent += btnInput;
-
-    if(btnInput === "CLR") {
-        document.querySelector(".display").textContent = ""
+    if(!isNaN(btnInput)) {
+        document.querySelector(".display").textContent += btnInput;
+    } else if(btnInput === "CLR") {
+        document.querySelector(".display").textContent = "";
         resetValues();
-        // console.log(firstValue)
-        // console.log(secondValue)
+    } else if(btnInput === "=") {
+        if(operatorInUse === false) {
+            return;
+        } else {
+            secondValue = getCurrentCalcValue();
+
+            firstValue = operate(operator, firstValue, secondValue);
+            document.querySelector(".display").textContent = firstValue;
+        }
+    } else {
+        if(operatorInUse === false) {
+            operator = btnInput;
+            operatorInUse = true;
+
+            firstValue = getCurrentCalcValue();
+            document.querySelector(".display").textContent = "";
+        }
     }
+
+    // document.querySelector(".display").textContent += btnInput;
+
+    // if(btnInput === "CLR") {
+    //     document.querySelector(".display").textContent = ""
+    //     resetValues();
+    //     // console.log(firstValue)
+    //     // console.log(secondValue)
+    // }
 
 }
 
