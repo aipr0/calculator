@@ -53,7 +53,6 @@ function getCurrentCalcValue() {
 
 function calculate(e) {
     let btnInput = e.target.textContent;
-    console.log(btnInput);
 
     if(!isNaN(btnInput)) {
         document.querySelector(".display").textContent += btnInput;
@@ -68,6 +67,7 @@ function calculate(e) {
 
             firstValue = operate(operator, firstValue, secondValue);
             document.querySelector(".display").textContent = firstValue;
+            operatorInUse = false;
         }
     } else {
         if(operatorInUse === false) {
