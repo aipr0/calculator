@@ -3,12 +3,6 @@ let secondValue = 0;
 let operator = "";
 let operatorInUse = false;
 
-// Dummy values for testing first and second numbers used in calculation are reset when CLR is pressed
-// firstValue = 5;
-// secondValue = 2;
-//  console.log(firstValue)
-//  console.log(secondValue)
-
 function resetValues() {
     firstValue = 0;
     secondValue = 0;
@@ -48,16 +42,16 @@ function operate(operator, a, b) {
 }
 
 function getCurrentCalcValue() {
-     return document.querySelector(".display").textContent;
+     return document.querySelector(".display-text").textContent;
 }
 
 function calculate(e) {
     let btnInput = e.target.textContent;
 
     if(!isNaN(btnInput)) {
-        document.querySelector(".display").textContent += btnInput;
+        document.querySelector(".display-text").textContent += btnInput;
     } else if(btnInput === "CLR") {
-        document.querySelector(".display").textContent = "";
+        document.querySelector(".display-text").textContent = "";
         resetValues();
     } else if(btnInput === "=") {
         if(operatorInUse === false) {
@@ -66,7 +60,7 @@ function calculate(e) {
             secondValue = getCurrentCalcValue();
 
             firstValue = operate(operator, firstValue, secondValue);
-            document.querySelector(".display").textContent = firstValue;
+            document.querySelector(".display-text").textContent = firstValue;
             operatorInUse = false;
         }
     } else {
@@ -75,7 +69,7 @@ function calculate(e) {
             operatorInUse = true;
 
             firstValue = getCurrentCalcValue();
-            document.querySelector(".display").textContent = "";
+            document.querySelector(".display-text").textContent = "";
         }
     }
 
