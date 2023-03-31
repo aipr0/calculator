@@ -12,6 +12,16 @@ body {
     flex: 1;
 }
 
+h1 {
+    font-size: 60px;
+    color: rgb(113, 113, 250);
+}
+
+header > p {
+    font-size: 30px;
+    color: rgb(94, 94, 94);
+}
+
 header, footer {
     display: flex;
     height: fit-content;
@@ -31,11 +41,14 @@ footer {
 }
 
 .calculator {
+    background-color: grey;
     display: flex;
     flex-direction: column;
     width: 500px;
     height: 700px;
-    border:red solid 1px;
+    padding: 30px;
+    border: darkgrey solid 2px;
+    border-radius: 10px;
 }
 
 .display {
@@ -43,7 +56,7 @@ footer {
     display: flex;
     justify-content: flex-end;
     flex: 1;
-    background-color: rgba(255, 0, 0, .15);
+    background-color: rgba(255, 0, 0);
 }
 
 .display-text {
@@ -54,28 +67,33 @@ footer {
     flex: 3;
 }
 
-.numbers {
+.numbers, .operators {
     display: flex;
     flex-wrap: wrap;
+}
+
+.numbers{ 
     flex: 3;
 }
 
 .operators {
-    display: flex;
-    flex-wrap: wrap;
     flex: 1;
+}
+
+button {
+    cursor: pointer;
 }
 
 .numbers button {
     font-size: 24px;
     width: 33.3%;
     height: 25%;
-    background-color: rgba(0, 255, 255, .35)
+    background-color: rgba(0, 255, 255)
   }
 
 .operators button {
     font-size: 24px;
     width: 100%;
     height: 25%;
-    background-color: rgba(0, 255, 0, .15);
+    background-color: rgba(0, 255, 0);
 }
