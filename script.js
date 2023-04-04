@@ -45,17 +45,25 @@ function getCurrentCalcValue() {
      return document.querySelector(".display-text").textContent;
 }
 
+function clearCalculator() {
+    document.querySelector(".display-text").textContent = "";
+}
+
 function calculate(e) {
     let btnInput = e.target.textContent;
 
     if(!isNaN(btnInput)) {
         document.querySelector(".display-text").textContent += btnInput;
     } else if(btnInput === "CLR") {
-        document.querySelector(".display-text").textContent = "";
+        clearCalculator();
         resetValues();
     } else if(btnInput === "=") {
         if(operatorInUse === false) {
             return;
+        } else if(operator === "/" && getCurrentCalcValue() === "0") {
+            alert("You cannot divide by 0!")
+            clearCalculator();
+            resetValues();
         } else {
             secondValue = getCurrentCalcValue();
 
