@@ -72,7 +72,9 @@ function calculate(e) {
             operatorInUse = false;
         }
     } else {
-        if(operatorInUse === false) {
+        if(operatorInUse === false && getCurrentCalcValue() === "") {
+            return;
+        } else if(operatorInUse === false) {
             operator = btnInput;
             operatorInUse = true;
 
