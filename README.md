@@ -7,7 +7,7 @@ I took a break from this because I was struggling with flexbox to create a layou
 
 In summary:
 - [x] Allow calculator to continue performing calculations, using the last result as the first value
-- [ ] Spend time styling the calculator
+- [x] Spend time styling the calculator
 - [ ] Fix NaN bug when using operator is evaluated before using numbers
 - [ ] Prevent user from dividing by 0
 - [ ] Rearrange the button layout so it can be scaled properly
