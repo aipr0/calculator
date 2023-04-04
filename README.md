@@ -8,7 +8,8 @@ I took a break from this because I was struggling with flexbox to create a layou
 In summary:
 - [x] Allow calculator to continue performing calculations, using the last result as the first value
 - [x] Spend time styling the calculator
-- [ ] Fix NaN bug when using operator is evaluated before using numbers
+- [x] Fix NaN bug when using operator is evaluated before using numbers
+- [ ] Allow user to use negative numbers
 - [ ] Prevent user from dividing by 0
 - [ ] Rearrange the button layout so it can be scaled properly
 - [ ] Alter the layout to resemble a keyboard's number pad in another branch
