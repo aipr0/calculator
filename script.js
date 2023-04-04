@@ -53,6 +53,9 @@ function calculate(e) {
     let btnInput = e.target.textContent;
 
     if(!isNaN(btnInput)) {
+        if(getCurrentCalcValue() === "0") {
+            return;
+        }
         document.querySelector(".display-text").textContent += btnInput;
     } else if(btnInput === "CLR") {
         clearCalculator();
@@ -71,10 +74,12 @@ function calculate(e) {
             document.querySelector(".display-text").textContent = firstValue;
             operatorInUse = false;
         }
-    } else {
-        if(operatorInUse === false && getCurrentCalcValue() === "") {
-            return;
-        } else if(operatorInUse === false) {
+    } else if(operatorInUse === false) {
+        if(getCurrentCalcValue() === "") {
+            if(btnInput === "-") {
+                document.querySelector(".display-text").textContent += "-";
+            }
+        } else {
             operator = btnInput;
             operatorInUse = true;
 
@@ -82,16 +87,6 @@ function calculate(e) {
             document.querySelector(".display-text").textContent = "";
         }
     }
-
-    // document.querySelector(".display").textContent += btnInput;
-
-    // if(btnInput === "CLR") {
-    //     document.querySelector(".display").textContent = ""
-    //     resetValues();
-    //     // console.log(firstValue)
-    //     // console.log(secondValue)
-    // }
-
 }
 
 function getButtonValue() {
@@ -103,9 +98,3 @@ function getButtonValue() {
 }
 
 getButtonValue()
-
-// Testing calculator operations
-// console.log(operate("add", 2, 2)); //Should be 4
-// console.log(operate("subtract", 10, 1)); //Should be 9
-// console.log(operate("multiply", 5, 5)); //Should be 25
-// console.log(operate("divide", 90, 9)); //Should be 10
