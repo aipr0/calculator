@@ -73,10 +73,26 @@ h1 {
 .row button {
     flex: 1;
     font-size: 48px;
-    color: darkgreen;
+    color: white;
     border: 2px solid grey;
     border-radius: 10px;
     margin: 0px 5px;
+}
+
+.op {
+    background-color: rgba(0, 0, 0, 0.5)
+}
+
+.num {
+    background-color: rgba(50, 50, 168, 0.5);
+}
+
+.equals {
+    background-color: rgba(50, 168, 50, 0.5);
+}
+
+.clear {
+    background-color: rgba(168, 50, 50, 0.5);
 }
 
 .footer {
