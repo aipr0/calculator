@@ -3,51 +3,46 @@ let secondOperand = 0;
 
 let chosenOperator = "";
 let operatorInUse = false;
-let negationInUse = false;
 
 const buttons = document.querySelectorAll(".calculator button");
 const display = document.querySelector(".value");
 
-buttons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-        populateDisplay(e.target.textContent);
-    });
-});
+buttons.forEach((button) => button.addEventListener("click", populateDisplay));
 
 function populateDisplay(key) {
     const OPERATORS = ["+", "-", "x", "/", "=", "C"];
+
+    keyValue = key.target.textContent;
 
     if(display.textContent === "ERROR!") {
         clear();
     }
 
-    if(OPERATORS.includes(key)) {
-        if(key === "C") {
+    if(OPERATORS.includes(keyValue)) {
+        if(keyValue === "C") {
             clear();
-        } else if(key === "=") {
-            if(operatorInUse === true) {
+        } else if(keyValue === "=") {
+            if(operatorInUse) {
                 secondOperand = display.textContent;
 
                 display.textContent = operate(chosenOperator, firstOperand, secondOperand);
 
                 operatorInUse = false;
             }
-        } else if(key === "-") {
+        } else if(keyValue === "-") {
             if(display.textContent === "") {
-                display.textContent += key;
-            } else if(operatorInUse === false) {
-                getFirstValue(key);
+                display.textContent += keyValue;
+            } else if(!operatorInUse) {
+                getFirstValue(keyValue);
             } 
 
          } else {
-            getFirstValue(key);
+            getFirstValue(keyValue);
          }
     } else {
-        display.textContent += key;
+        display.textContent += keyValue;
     }
 }
-
-
 
 function add(a, b){
     console.log(a + b);
@@ -85,7 +80,6 @@ function clear(){
 
     chosenOperator = "";
     operatorInUse = false;
-    negationInUse = false;
 }
 
 function getFirstValue(key){
