@@ -51,17 +51,17 @@ function populateDisplay(key) {
 
 function add(a, b){
     console.log(a + b);
-    return a + b;
+    return roundNum(a + b);
 }
 
 function subtract(a, b){
     console.log(a - b);
-    return a - b;
+    return roundNum(a - b);
 }
 
 function multiply(a, b){
     console.log(a * b);
-    return a * b;
+    return roundNum(a * b);
 }
 
 function divide(a, b){
@@ -69,8 +69,12 @@ function divide(a, b){
     if(b === 0) {
         return "ERROR!";
     } else {
-        return a / b;
+        return roundNum(a / b);
     }
+}
+
+function roundNum(expr) {
+    return Math.round(expr * 10000) / 10000;
 }
 
 function clear(){
